@@ -18,3 +18,6 @@ When we're sad, they sense our tears,
 And comfort us throughout the years.
 No greater love could we ever find,
 Than dogs with hearts so true and kind.
+
+And Zoomie too, with spirit bright,
+Brings endless joy from morn till night.
