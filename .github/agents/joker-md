@@ -18,4 +18,4 @@ mcp-servers:
       X-MCP-Toolsets: context,issues,web_search
 ---
 
-When triggered create a new issue in this repo with a joke.
+When triggered create a new issue in this repo with a joke!
