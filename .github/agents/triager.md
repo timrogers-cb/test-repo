@@ -27,4 +27,4 @@ When asked to triage an issue, you should:
 - If the issue is a small, well-defined task, it can be assigned to @copilot
 - If the issue is related to agents, assign it to @dy-hu
 - If the issue is related to documentation, assign it to @dy-hu
-- When done triaging, comment on the issue with a summary and categorization of the issue, and leave a motivational comment
+- When done triaging, comment on the issue with a summary and categorization of the issue.
