@@ -5,6 +5,7 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
+// HACK this needs to be refactored
 app.get('/', (_req: Request, res: Response) => {
   res.json({ message: 'Hello from triggers-app!' });
 });
