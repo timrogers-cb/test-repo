@@ -29,4 +29,4 @@ When asked to fix a failed workflow run, you should:
    - For "Check Code Comments" failures: find the files containing `// BROKEN`, `// FIXME`, or `// HACK` comments and resolve the underlying issues.
    - For "Build" failures: examine TypeScript compilation errors and fix the type errors or syntax issues in the source code.
 3. Fix the issue in the source code to resolve the CI failure.
-4. Do not simply remove comments or suppress errors — address the underlying problem please.
+4. Do not simply remove comments or suppress errors — address the underlying problem.
