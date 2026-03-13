@@ -5,14 +5,17 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
-// HACK this needs to be refactored
-app.get('/', (_req: Request, res: Response) => {
+function getRoot(_req: Request, res: Response): void {
   res.json({ message: 'Hello from triggers-app!' });
-});
+}
 
-app.get('/health', (_req: Request, res: Response) => {
+app.get('/', getRoot);
+
+function getHealth(_req: Request, res: Response): void {
   res.json({ status: 'ok' });
-});
+}
+
+app.get('/health', getHealth);
 
 if (require.main === module) {
   app.listen(port, () => {
