@@ -19,6 +19,4 @@ if (require.main === module) {
   });
 }
 
-const brokenValue: number = 'this is not a number';
-
 export { app };
