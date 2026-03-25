@@ -1,5 +1,7 @@
 import express, { Request, Response } from 'express';
 
+const brokenValue: number = 'this is not a number';
+
 const app = express();
 const port = process.env.PORT || 3000;
 
