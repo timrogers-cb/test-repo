@@ -8,6 +8,7 @@ on:
     workflows:
       - 'Check Code Comments'
       - Build
+      - impossible test
 github:
   permissions:
     actions: read
@@ -28,5 +29,6 @@ When asked to fix a failed workflow run, you should:
 2. Analyze the failure output to determine the root cause:
    - For "Check Code Comments" failures: find the files containing `// BROKEN`, `// FIXME`, or `// HACK` comments and resolve the underlying issues.
    - For "Build" failures: examine TypeScript compilation errors and fix the type errors or syntax issues in the source code.
+   - For "impossible test" failures: Do not edit the impossible.yaml workflow file. Instead, just give up immediately if it fails.
 3. Fix the issue in the source code to resolve the CI failure.
 4. Do not simply remove comments or suppress errors — address the underlying problem.
