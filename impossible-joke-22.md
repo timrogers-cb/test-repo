@@ -1,0 +1,5 @@
+# Funny Joke
+
+Why did the programmer quit their job?
+
+Because they didn't get arrays! 💻
