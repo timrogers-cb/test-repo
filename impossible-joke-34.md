@@ -1,0 +1,5 @@
+# Impossible Joke 34
+
+Why do programmers prefer dark mode?
+
+Because light attracts bugs! 🐛
