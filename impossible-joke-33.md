@@ -1,0 +1,5 @@
+# Impossible Joke 33
+
+Why did the developer quit his job?
+
+Because he didn't get arrays! 🚀
