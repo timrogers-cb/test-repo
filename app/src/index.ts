@@ -9,7 +9,7 @@ app.get('/', (_req: Request, res: Response) => {
   res.json({ message: 'Hello from triggers-app!' });
 });
 
-# dummy comment
+// dummy comment
 app.get('/health0', (_req: Request, res: Response) => {
   res.json({ status: 'ok' });
 });
