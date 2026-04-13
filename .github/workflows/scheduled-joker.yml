@@ -1,0 +1,23 @@
+name: Scheduled joker
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  trigger-joker-agent:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create issue to trigger joker agent
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue create \
+            --repo "${{ github.repository }}" \
+            --title "Scheduled joker run - $(date -u '+%Y-%m-%dT%H:%M:%SZ')" \
+            --body "@github-copilot" \
+            --assignee "copilot"
