@@ -1,0 +1,36 @@
+name: Scheduled Auto Bug Fixer
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  trigger-auto-bug-fixer:
+    name: Trigger auto-bug-fixer agent
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create issue to trigger auto-bug-fixer agent
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          OPEN_COUNT=$(gh issue list \
+            --repo "${{ github.repository }}" \
+            --state open \
+            --label "auto-bug-fixer" \
+            --json number \
+            --jq 'length')
+
+          if [ "$OPEN_COUNT" -gt 0 ]; then
+            echo "Skipping: $OPEN_COUNT open auto-bug-fixer issue(s) already exist."
+            exit 0
+          fi
+
+          gh issue create \
+            --repo "${{ github.repository }}" \
+            --title "Scheduled auto bug fix - $(date -u '+%Y-%m-%d %H:%M UTC')" \
+            --label "auto-bug-fixer" \
+            --body "@github-copilot Please run the auto-bug-fixer agent to scan the codebase for bugs and fix them."
