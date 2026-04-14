@@ -1,0 +1,26 @@
+name: Scheduled Auto Bug Fixer
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  trigger-auto-bug-fixer:
+    name: Trigger auto-bug-fixer agent
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create issue to trigger auto-bug-fixer agent
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Scheduled auto bug fix - ${new Date().toISOString().slice(0, 16).replace('T', ' ')} UTC`,
+              body: '@github-copilot Please run the auto-bug-fixer agent to scan the repository for bugs and fix them.',
+              assignees: ['copilot'],
+            });
