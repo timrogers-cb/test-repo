@@ -1,4 +1,4 @@
-name: Scheduled Auto Bug Fixer
+name: Scheduled Auto-Bug-Fixer
 
 on:
   schedule:
@@ -16,9 +16,11 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          BODY="This issue was automatically created by the scheduled workflow to trigger the auto-bug-fixer agent.
+
+@github-copilot Please run the auto-bug-fixer agent to scan the codebase for bugs and fix them."
+
           gh issue create \
             --repo "${{ github.repository }}" \
             --title "Scheduled: auto-bug-fixer run $(date -u '+%Y-%m-%d %H:%M UTC')" \
-            --body "This issue was automatically created by the scheduled workflow to trigger the auto-bug-fixer agent.
-
-@github-copilot Please run the auto-bug-fixer agent to scan the codebase for bugs and fix them."
+            --body "$BODY"
