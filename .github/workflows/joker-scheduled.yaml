@@ -17,8 +17,17 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh issue create \
+          ISSUE_URL=$(gh issue create \
             --repo "${{ github.repository }}" \
             --title "Scheduled joker agent run - $(date -u +'%Y-%m-%d %H:%M UTC')" \
             --body "@github-copilot joker" \
-            --assignee "github-copilot[bot]"
+            --assignee "github-copilot[bot]")
+          echo "issue_url=$ISSUE_URL" >> "$GITHUB_ENV"
+
+      - name: Close issue after agent is triggered
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue close "${{ env.issue_url }}" \
+            --repo "${{ github.repository }}" \
+            --comment "Closed automatically after triggering the joker agent."
