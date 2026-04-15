@@ -19,6 +19,6 @@ jobs:
         run: |
           gh issue create \
             --repo "${{ github.repository }}" \
-            --title "Scheduled joker run - $(date -u '+%Y-%m-%dT%H:00 UTC')" \
+            --title "Scheduled joker run - $(date -u '+%Y-%m-%dT%H:%M UTC')" \
             --body "Hourly scheduled run of the joker agent." \
             --assignee "copilot"
