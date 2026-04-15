@@ -22,5 +22,5 @@ jobs:
             --repo "${{ github.repository }}" \
             --title "Scheduled joker run - $(date -u '+%Y-%m-%d %H:%M UTC')" \
             --body "This issue was automatically created by the scheduled workflow to trigger the joker agent." \
-            --assignee "@copilot" \
+            --assignee "copilot" \
             --label "copilot"
