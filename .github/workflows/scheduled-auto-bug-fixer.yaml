@@ -18,10 +18,11 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          BODY="This issue was automatically created by the **Scheduled Auto Bug Fixer** workflow to trigger the \`auto-bug-fixer\` agent on an hourly basis.
+
+          @copilot please run the auto-bug-fixer agent to identify and fix any bugs in the codebase."
+
           gh issue create \
             --repo "${{ github.repository }}" \
             --title "Scheduled auto bug fix run - $(date -u '+%Y-%m-%d %H:%M UTC')" \
-            --body "This issue was automatically created by the **Scheduled Auto Bug Fixer** workflow to trigger the \`auto-bug-fixer\` agent on an hourly basis.
-
-          @copilot please run the auto-bug-fixer agent to identify and fix any bugs in the codebase." \
-            --assignee "@me"
+            --body "$BODY"
