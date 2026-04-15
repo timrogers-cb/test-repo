@@ -13,6 +13,20 @@ jobs:
     name: Trigger auto-bug-fixer agent
     runs-on: ubuntu-latest
     steps:
+      - name: Close previous scheduled issues
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue list \
+            --repo "${{ github.repository }}" \
+            --label "scheduled-auto-bug-fixer" \
+            --state open \
+            --json number \
+            --jq '.[].number' \
+          | xargs -r -I{} gh issue close {} \
+              --repo "${{ github.repository }}" \
+              --comment "Closed by the next scheduled run."
+
       - name: Create issue to trigger auto-bug-fixer agent
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -20,7 +34,7 @@ jobs:
           gh issue create \
             --repo "${{ github.repository }}" \
             --title "Scheduled auto bug fix run - $(date -u '+%Y-%m-%d %H:%M UTC')" \
+            --label "scheduled-auto-bug-fixer" \
             --body "This issue was automatically created by the **Scheduled Auto Bug Fixer** workflow to trigger the auto-bug-fixer agent on an hourly schedule.
 
-          @github-copilot use the auto-bug-fixer agent to scan the codebase for bugs and fix them." \
-            --assignee "@me"
+          @github-copilot use the auto-bug-fixer agent to scan the codebase for bugs and fix them."
