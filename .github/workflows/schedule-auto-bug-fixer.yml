@@ -1,0 +1,26 @@
+name: Scheduled Auto Bug Fixer
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  trigger-auto-bug-fixer:
+    name: Trigger auto-bug-fixer agent
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create issue assigned to Copilot
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue create \
+            --repo "${{ github.repository }}" \
+            --title "Scheduled auto bug fix run - $(date -u '+%Y-%m-%d %H:%M UTC')" \
+            --body "This issue was automatically created by the **Scheduled Auto Bug Fixer** workflow to trigger the \`auto-bug-fixer\` agent on an hourly schedule.
+
+          Please review the codebase for bugs and fix any issues found." \
+            --assignee "Copilot"
