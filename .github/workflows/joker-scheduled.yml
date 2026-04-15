@@ -20,5 +20,5 @@ jobs:
           gh issue create \
             --repo "${{ github.repository }}" \
             --title "Scheduled joker agent run - $(date -u '+%Y-%m-%dT%H:%M:%SZ')" \
-            --body "@copilot" \
+            --body "@copilot run the joker agent tasks" \
             --label "copilot"
