@@ -1,0 +1,20 @@
+name: Run joker agent (scheduled)
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  run-joker:
+    name: Run joker agent
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Run joker agent
+        uses: github/copilot-coding-agent@v1
+        with:
+          agent: joker
