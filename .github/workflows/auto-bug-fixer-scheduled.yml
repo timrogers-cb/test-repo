@@ -20,5 +20,4 @@ jobs:
           gh issue create \
             --repo "${{ github.repository }}" \
             --title "Scheduled auto bug fix run - $(date -u '+%Y-%m-%d %H:%M UTC')" \
-            --body "@github-copilot run auto-bug-fixer" \
-            --assignee "@me"
+            --body "@github-copilot run auto-bug-fixer"
