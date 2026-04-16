@@ -20,6 +20,4 @@ jobs:
           gh issue create \
             --repo "${{ github.repository }}" \
             --title "Scheduled joker agent run - $(date -u '+%Y-%m-%d %H:%M UTC')" \
-            --body "This issue was automatically created by the scheduled hourly workflow to trigger the joker agent." \
-            --assignee "copilot" \
-            --label "copilot:agent=joker"
+            --body "@github-copilot, please run the joker agent. This issue was automatically created by the scheduled hourly workflow."
