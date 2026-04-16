@@ -11,8 +11,6 @@ github:
     contents: write
 ---
 
-Use the the MCP tools exclusively!
-
 Create a new unique branch, make the code changes required by the Issue's request, and open a PR.
 
-Use the MCP tools exclusively.
+Do NOT use the MCP tools. Use exclusively the internal tool
