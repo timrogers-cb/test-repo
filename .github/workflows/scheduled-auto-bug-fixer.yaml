@@ -21,4 +21,4 @@ jobs:
             --repo "${{ github.repository }}" \
             --title "Scheduled: Auto Bug Fixer $(date -u '+%Y-%m-%d %H:%M UTC')" \
             --body "This issue was automatically created by the **Scheduled Auto Bug Fixer** workflow to trigger the auto-bug-fixer agent on an hourly basis." \
-            --assignee "@copilot"
+            --assignee "copilot"
