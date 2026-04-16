@@ -1,0 +1,21 @@
+name: Scheduled Joker Agent
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  run-joker-agent:
+    name: Run Joker Agent
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Joker Agent
+        uses: github/copilot-coding-agent@v1
+        with:
+          agent_name: joker
+          github_token: ${{ secrets.GITHUB_TOKEN }}
