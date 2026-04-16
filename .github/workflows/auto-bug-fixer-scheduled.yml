@@ -1,0 +1,20 @@
+name: Scheduled Auto Bug Fixer
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  run-auto-bug-fixer:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    steps:
+      - name: Run auto-bug-fixer agent
+        uses: github/copilot-coding-agent@v1
+        with:
+          agent: auto-bug-fixer
+          github-token: ${{ secrets.GITHUB_TOKEN }}
