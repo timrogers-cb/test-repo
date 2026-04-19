@@ -1,1 +1,22 @@
-aW1wb3J0IGV4cHJlc3MsIHsgUmVxdWVzdCwgUmVzcG9uc2UgfSBmcm9tICdleHByZXNzJzsKCmNvbnN0IGFwcCA9IGV4cHJlc3MoKTsKY29uc3QgcG9ydCA9IHByb2Nlc3MuZW52LlBPUlQgfHwgMzAwMDsKCmFwcC51c2UoZXhwcmVzcy5qc29uKCkpOwoKYXBwLmdldCgnLycsIChfcmVxOiBSZXF1ZXN0LCByZXM6IFJlc3BvbnNlKSA9PiB7CiAgcmVzLmpzb24oeyBtZXNzYWdlOiAnSGVsbG8gZnJvbSB0cmlnZ2Vycy1hcHAhJyB9KTsKfSk7CgphcHAuZ2V0KCcvaGVhbHRoJywgKF9yZXE6IFJlcXVlc3QsIHJlczogUmVzcG9uc2UpID0+IHsKICByZXMuanNvbih7IHN0YXR1czogJ29rJyB9KTsKfSk7CgppZiAocmVxdWlyZS5tYWluID09PSBtb2R1bGUpIHsKICBhcHAubGlzdGVuKHBvcnQsICgpID0+IHsKICAgIGNvbnNvbGUubG9nKGBTZXJ2ZXIgcnVubmluZyBvbiBwb3J0ICR7cG9ydH1gKTsKICB9KTsKfQoKZXhwb3J0IHsgYXBwIH07Cg==
+import express, { Request, Response } from 'express';
+
+const app = express();
+const port = process.env.PORT || 3000;
+
+app.use(express.json());
+
+app.get('/', (_req: Request, res: Response) => {
+  res.json({ message: 'Hello from triggers-app!' });
+});
+
+app.get('/health', (_req: Request, res: Response) => {
+  res.json({ status: 'ok' });
+});
+
+if (require.main === module) {
+  app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+  });
+}
+
+export { app };
