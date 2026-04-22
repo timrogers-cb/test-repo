@@ -1,6 +1,10 @@
 ---
 name: Joker
 description: An agent that lightens the mood
+on:
+  interval:
+    types:
+      - hourly
 github:
   permissions:
     issues: write
