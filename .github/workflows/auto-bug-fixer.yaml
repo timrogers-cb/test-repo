@@ -1,0 +1,26 @@
+name: Auto Bug Fixer
+
+on:
+  schedule:
+    # Run every hour at minute 0
+    - cron: '0 * * * *'
+  workflow_dispatch: # Allow manual triggering
+
+permissions:
+  issues: write
+  contents: write
+  pull-requests: write
+
+jobs:
+  auto-bug-fixer:
+    name: Run Auto Bug Fixer Agent
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Invoke Auto Bug Fixer Agent
+        uses: github/copilot-agent-runner@v1
+        with:
+          agent: auto-bug-fixer
+          token: ${{ secrets.GITHUB_TOKEN }}
